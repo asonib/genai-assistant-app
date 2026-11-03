@@ -1,0 +1,19 @@
+# Acme Platform Engineering Handbook
+
+## Billing
+The billing service runs nightly at 02:00 UTC and reconciles invoices with the payment gateway. Billing failures are retried three times with exponential backoff before an alert pages the billing on-call engineer. Refunds above 500 USD require approval from a finance lead.
+
+## Authentication
+The authentication service issues opaque tokens that expire after seven days. Tokens are stored hashed and are revoked immediately when a user changes their password. Service-to-service calls use short-lived signed JWTs with a five minute lifetime.
+
+## Search
+Search is powered by an Elasticsearch cluster with three data nodes. Index mappings are versioned in git and rolled out with a blue/green alias swap so that reindexing never causes downtime.
+
+## Observability
+Application logs are shipped to a central Loki instance and retained for thirty days. Grafana dashboards visualise latency percentiles, error budgets and saturation. The p99 latency SLO for public APIs is 400 milliseconds.
+
+## Deployments
+Deployments go through GitHub Actions: lint, unit tests, container build, staging smoke tests and finally a canary release that receives five percent of production traffic for thirty minutes before full rollout. Deploys are frozen on Fridays after 15:00 local time.
+
+## Backups and Disaster Recovery
+Database backups are taken every six hours, encrypted with KMS keys, copied to a second region and restored weekly into a scratch environment to verify integrity. The recovery point objective is six hours and the recovery time objective is two hours.

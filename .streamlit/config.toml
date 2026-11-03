@@ -1,0 +1,10 @@
+[server]
+# Matches AppConfigConstants.MAX_FILE_SIZE_BYTES on the backend (MB).
+maxUploadSize = 10
+headless = true
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+primaryColor = "#1F4E79"

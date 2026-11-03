@@ -1,0 +1,4 @@
+# Everything needed to run backend + frontend + MCP server from one virtualenv.
+-r backend/requirements.txt
+-r frontend/requirements.txt
+-r mcp_server/requirements.txt

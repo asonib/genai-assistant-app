@@ -1,0 +1,16 @@
+# ---- Web / API ----
+django>=5.0,<6.0
+djangorestframework>=3.15.0
+drf-spectacular>=0.27.0
+python-dotenv>=1.0.0
+
+# ---- Agent ----
+langgraph>=0.2.60
+anthropic>=0.40.0
+mcp>=1.9.0
+
+# ---- RAG ----
+faiss-cpu>=1.8.0
+sentence-transformers>=3.0.0
+numpy>=1.26
+pypdf>=4.0.0
